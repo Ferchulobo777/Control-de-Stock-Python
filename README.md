@@ -27,7 +27,13 @@ Este es un script de Python para la gestión de stock de productos. Permite regi
 
 1. Clona este repositorio: `git clone https://github.com/Ferchulobo777/Control-de-Stock-Python.git`
 2. Asegúrate de tener Python instalado en tu sistema.
-3. Instala las dependencias: `pip install -r requirements.txt`
+3. Crea un entorno virtual:
+   - En Windows: `python -m venv venv`
+   - En macOS/Linux: `python3 -m venv venv`
+4. Activa el entorno virtual:
+   - En Windows: `venv\Scripts\activate`
+   - En macOS/Linux: `source venv/bin/activate`
+5. Instala las dependencias: `pip install -r requirements.txt`
 
 ---
 
