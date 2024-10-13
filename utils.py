@@ -1,0 +1,3 @@
+sep ="*"
+guion ="-"
+espacio =" "
