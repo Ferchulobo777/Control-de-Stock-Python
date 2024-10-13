@@ -1,7 +1,10 @@
 <h1 align="center">📦 Gestión de Stock de Productos 📦</h1>
 
 <p align="center">
-  <img src="https://via.placeholder.com/400.png?text=Logo+de+Gestión+de+Stock" alt="Gestión de Stock" width="400"/>
+  <img src="https://res.cloudinary.com/dpvzlh1zv/image/upload/v1728850775/control%20de%20stock/bsege74xuv2q9ak5ekez.png" alt="Gestión de Stock" width="400"/>
+</p>
+<p align="center">
+  <img src="https://res.cloudinary.com/dpvzlh1zv/image/upload/v1728850775/control%20de%20stock/erddieuqb772o2lzb73v.png" alt="Gestión de Stock" width="400"/>
 </p>
 
 ---
