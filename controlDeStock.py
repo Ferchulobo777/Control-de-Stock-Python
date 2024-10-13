@@ -6,7 +6,7 @@ from conexion_db import crear_conexion, cerrar_conexion
 from servicios_db import crear_tabla_productos, agregar_producto, obtener_productos, actualizar_producto, eliminar_producto, buscar_producto_por_nombre
 
 # Conectar a la base de datos
-conexion = crear_conexion("productos.db")
+conexion = crear_conexion("products.db")
 
 # Crear la tabla de productos si no existe
 crear_tabla_productos(conexion)
