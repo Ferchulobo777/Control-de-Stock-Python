@@ -3,7 +3,7 @@ from rich.table import Table
 from constantes import cian
 from utils import sep, guion, espacio
 from conexion_db import crear_conexion, cerrar_conexion
-from servicios_db import crear_tabla_productos, agregar_producto, obtener_productos, actualizar_producto, eliminar_producto, buscar_producto_por_nombre
+from servicios_db import crear_tabla_productos, agregar_producto, obtener_productos, actualizar_producto, eliminar_producto, buscar_producto_por_nombre, generar_reporte_bajo_stock
 
 # Conectar a la base de datos
 conexion = crear_conexion("products.db")
@@ -145,6 +145,7 @@ while not salir:
         elif seleccion == 6:
             print("Has seleccionado REPORTE DE BAJO STOCK.")
             reporte_bajo_stock()
+            generar_reporte_bajo_stock(conexion)
             # Lógica para reporte de bajo stock (puedes implementar esta función)
         elif seleccion == 7:
             print("Saliendo del programa.")
