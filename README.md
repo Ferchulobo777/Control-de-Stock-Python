@@ -25,7 +25,7 @@ Este es un script de Python para la gestión de stock de productos. Permite regi
 
 ## Instalación
 
-1. Clona este repositorio: `git clone https://github.com/tu_usuario/GestionStock.git`
+1. Clona este repositorio: `git clone https://github.com/Ferchulobo777/Control-de-Stock-Python.git`
 2. Asegúrate de tener Python instalado en tu sistema.
 3. Instala las dependencias: `pip install -r requirements.txt`
 
@@ -34,6 +34,7 @@ Este es un script de Python para la gestión de stock de productos. Permite regi
 ## Tecnologías Utilizadas
 
 - Python
+- SQLite (para la gestión de la base de datos)
 - Rich (para la interfaz de usuario)
 - Pandas (para la gestión de datos)
 - openpyxl (para generar archivos Excel)
@@ -42,7 +43,7 @@ Este es un script de Python para la gestión de stock de productos. Permite regi
 
 ## Ejemplo de Uso
 
-1. Ejecuta el script: `controlDeStock.py`
+1. Ejecuta el script: `python controlDeStock.py`
 2. Sigue las instrucciones en la salida de la consola para gestionar el stock de productos.
 
 ---
@@ -57,3 +58,4 @@ Para cualquier pregunta o comentario, puedes contactarme en: <br />
 ## Contribución
 
 ¡Contribuciones son bienvenidas! Si tienes alguna idea para mejorar este script, por favor abre un issue o envía un pull request.
+
