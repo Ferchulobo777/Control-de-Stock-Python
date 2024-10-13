@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://res.cloudinary.com/dpvzlh1zv/image/upload/v1728850775/control%20de%20stock/bsege74xuv2q9ak5ekez.png" alt="Gestión de Stock" width="400"/>
-  <img src="https://res.cloudinary.com/dpvzlh1zv/image/upload/v1728850775/control%20de%20stock/erddieuqb772o2lzb73v.png" alt="Gestión de Stock" width="380"/>
+  <img src="https://res.cloudinary.com/dpvzlh1zv/image/upload/v1728850775/control%20de%20stock/erddieuqb772o2lzb73v.png" alt="Gestión de Stock" width="360"/>
 </p>
 
 ---
