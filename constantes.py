@@ -1,0 +1,6 @@
+green = "#52C71B"
+blue = "#157BF0"
+red = "#F01657"
+orange = "#F87E21"
+yellow = "#FFF83B"
+cian = "#46F3F3"
