@@ -1,6 +1,6 @@
 from rich import print
 from rich.table import Table
-from constantes import cian
+from constantes import cian, red, green, orange, blue, yellow
 from utils import sep, guion, espacio
 from conexion_db import crear_conexion, cerrar_conexion
 from servicios_db import crear_tabla_productos, agregar_producto, obtener_productos, actualizar_producto, eliminar_producto, buscar_producto_por_nombre, generar_reporte_bajo_stock
@@ -41,7 +41,7 @@ def mostrar_menu():
     print(f"[{cian}]Por favor, selecciona una opción: [/{cian}]")
 
 def visualizar_productos():
-    """Visualizar los productos en la base de datos"""
+    print(f"""[{orange}]Visualizar los productos en la base de datos[/{orange}]""")
     productos = obtener_productos(conexion)
     
     # Crear una tabla con Rich
@@ -56,31 +56,40 @@ def visualizar_productos():
             table.add_row(str(producto[0]), producto[1], f"${producto[2]:.2f}", str(producto[3]))
         print(table)
     else:
-        print("No hay productos registrados.")
+        print(f"[{red}]No hay productos registrados.[/{red}]")
 
 def registro_producto():
-    """Registrar un producto nuevo"""
-    name = input("Nombre del producto: ")
-    price = float(input("Precio del producto: "))
-    quantity = int(input("Cantidad del producto: "))
+    print(f"""[{green}]Registrar un producto nuevo[/{green}]""")
+    print(f"[{green}]Nombre del Producto: [/{green}]")
+    name = str(input())
+    print(f"[{green}]Precio del producto: [/{green}]")
+    price = float(input())
+    print(f"[{green}]Cantidad del producto: [/{green}]")
+    quantity = int(input())
     agregar_producto(conexion, name, price, quantity)
 
 def actualizar_stock():
-    """Actualizar el stock de un producto"""
-    product_id = int(input("ID del producto a actualizar: "))
-    name = input("Nuevo nombre del producto: ")
-    price = float(input("Nuevo precio del producto: "))
-    quantity = int(input("Nueva cantidad del producto: "))
+    print(f"""[{blue}]Actualizar el stock de un producto[/{blue}]""")
+    print(f"""[{blue}]"ID del producto a actualizar: "[/{blue}]""")
+    product_id = int(input())
+    print(f"""[{blue}]"Nuevo nombre del producto: "[/{blue}]""")
+    name = str(input())
+    print(f"""[{blue}]"Nuevo precio del producto: "[/{blue}]""")
+    price = float(input())
+    print(f"""[{blue}]"Nueva cantidad del producto: "[/{blue}]""")
+    quantity = int(input())
     actualizar_producto(conexion, product_id, name, price, quantity)
 
 def eliminar_producto_db():
-    """Eliminar un producto de la base de datos"""
-    product_id = int(input("ID del producto a eliminar: "))
+    print(f"""[{red}]Eliminar un producto de la base de datos[/{red}]""")
+    print(f"[{red}]ID del producto a eliminar: [/{red}]")
+    product_id = int(input())
     eliminar_producto(conexion, product_id)
 
 def buscar_producto():
-    """Buscar un producto por nombre"""
-    nombre = input("Introduce el nombre del producto que deseas buscar: ").strip()
+    print(f"""[{yellow}]Buscar un producto por nombre[/{yellow}]""")
+    print(f"[{yellow}]Introduce el nombre del producto que deseas buscar: [/{yellow}]")
+    nombre = input().strip()
     producto = buscar_producto_por_nombre(conexion, nombre)
     
     if producto:
@@ -94,11 +103,11 @@ def buscar_producto():
         table.add_row(str(producto[0]), producto[1], f"${producto[2]:.2f}", str(producto[3]))
         print(table)
     else:
-        print(f"No se encontró ningún producto con el nombre '{nombre}'.")
+        print(f"[{red}]No se encontró ningún producto con el nombre '{nombre}'.[/{red}]")
 
 
 def reporte_bajo_stock(umbral=5):
-    """Mostrar productos con stock menor o igual a un umbral definido"""
+    print(f"""[{yellow}]Mostrar productos con baja cantidad de stock[/{yellow}]""")
     productos = obtener_productos(conexion)
     
     # Crear una tabla para los productos con bajo stock
@@ -114,9 +123,9 @@ def reporte_bajo_stock(umbral=5):
             table.add_row(str(producto[0]), producto[1], str(producto[3]))
         print(table)
     else:
-        print(f"No hay productos con stock menor o igual a {umbral}.")
+        print(f"[{red}]No hay productos con stock menor o igual a {umbral}.[/{red}]")
 
-# Inicializar una variable para controlar la salida
+# Inicializamos una variable booleana para controlar la salida
 salir = False
 
 # Iniciar el bucle del menú
@@ -140,20 +149,19 @@ while not salir:
             print("Has seleccionado ELIMINACIÓN.")
             eliminar_producto_db()  # Eliminar un producto
         elif seleccion == 5:
-            print("Has seleccionado LISTADO.")
-            buscar_producto()  # Listar todos los productos
+            print("Has seleccionado BUSCAR.")
+            buscar_producto()
         elif seleccion == 6:
             print("Has seleccionado REPORTE DE BAJO STOCK.")
             reporte_bajo_stock()
             generar_reporte_bajo_stock(conexion)
-            # Lógica para reporte de bajo stock (puedes implementar esta función)
         elif seleccion == 7:
             print("Saliendo del programa.")
             salir = True  # Cambia la variable para salir del bucle
         else:
-            print("Por favor, selecciona una opción válida entre 1 y 7.")
+            print(f"[{green}]Por favor, selecciona una opción válida entre 1 y 7.[/{green}]")
     except ValueError:
-        print("No escribiste una opción válida. Por favor, ingresa un número.")
+        print(f"[{red}]No escribiste una opción válida. Por favor, ingresa un número.[/{red}]")
 
 # Cerrar la conexión a la base de datos al salir
 cerrar_conexion(conexion)

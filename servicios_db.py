@@ -1,12 +1,14 @@
 import pandas as pd
+from rich import print
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
+from constantes import cian, red, green, orange, blue, yellow
 from sqlite3 import Error
 
 
 def crear_tabla_productos(conexion):
-    """Crear la tabla productos si no existe"""
+    print(f"""[{green}]Crear la tabla productos si no existe[/{green}]""")
     try:
         cursor = conexion.cursor()
         cursor.execute("""
@@ -18,40 +20,40 @@ def crear_tabla_productos(conexion):
                            );
                            """)
         conexion.commit()
-        print("Tabla 'products' creada correctamente.")
+        print(f"[{green}]Tabla 'products' creada correctamente.[{green}]")
     except Error as e:
-        print(f"Error al crear la tabla: {e}")
+        print(f"[{red}]Error al crear la tabla: {e}[/{red}]")
 
         
         
 def agregar_producto(conexion, name, price, quantity):
-    """Agregar un producto a la base de datos"""
+    print(f"""[{green}]Agregar un producto a la base de datos[/{green}]""")
     try:
         cursor = conexion.cursor()
         # Se debe pasar una tupla con los valores
         cursor.execute("INSERT INTO products (name, price, quantity) VALUES (?, ?, ?)", 
                        (name, price, quantity))
         conexion.commit()
-        print("Producto agregado correctamente.")    
+        print(f"[{green}]Producto agregado correctamente.[/{green}]")    
     except Error as e:
-        print(f"Error al agregar producto: {e}")
+        print(f"[{red}]Error al agregar producto: {e}[/{red}]")
 
                    
         
 def obtener_productos(conexion):
-    """Obtener los productos de la base de datos"""
+    print(f"""[{orange}]Obtener los productos de la base de datos[/{orange}]""")
     try:
         cursor = conexion.cursor()
         cursor.execute("SELECT * FROM products")
         productos = cursor.fetchall()
         return productos
     except Error as e:
-        print(f"Error al obtener productos: {e}")
+        print(f"[{red}]Error al obtener productos: {e}[/{red}]")
         return []
 
    
 def actualizar_producto(conexion, product_id, name, price, quantity):
-    """Actualizar todos los campos de un producto excepto el id"""
+    print(f"""[{blue}]Actualizar todos los campos de un producto excepto el id[/{blue}]""")
     try:
         cursor = conexion.cursor()
         # Usar el nombre correcto de la tabla
@@ -61,22 +63,22 @@ def actualizar_producto(conexion, product_id, name, price, quantity):
             WHERE product_id = ?
         """, (name, price, quantity, product_id))
         conexion.commit()  # Confirmar la transacción
-        print("Producto actualizado correctamente.")
+        print(f"[{green}]Producto actualizado correctamente.[/{green}]")
     except Error as e:
-        print(f"Error al actualizar el producto: {e}")
+        print(f"[{red}]Error al actualizar el producto: {e}[/{red}]")
 
 def eliminar_producto(conexion, id_product):
-    """Eliminar un producto de la base de Datos"""
+    print(f"""[{red}]Eliminar un producto de la base de Datos[/{red}]""")
     try:
         cursor = conexion.cursor()
         cursor.execute("DELETE FROM products WHERE product_id = ?", (id_product,))
         conexion.commit()
-        print("Producto eliminado correctamente.")
+        print(f"[{green}]Producto eliminado correctamente.[/{green}]")
     except Error as e:
-        print(f"Error al eliminar el producto: {e}")
+        print(f"[{red}]Error al eliminar el producto: {e}[/{red}]")
         
 def buscar_producto_por_nombre(conexion, nombre):
-    """Buscar un producto por su campo 'name' sin distinguir mayúsculas o minúsculas"""
+    print(f"""[{yellow}]Buscar un producto[/{yellow}]""")
     cursor = conexion.cursor()
     cursor.execute("SELECT * FROM products WHERE LOWER(name) LIKE LOWER(?)", (f"%{nombre}%",))
     return cursor.fetchone()
@@ -95,7 +97,7 @@ def generar_reporte_bajo_stock(conexion, umbral=5):
 
         # Verificar si el DataFrame está vacío
         if df.empty:
-            print("No hay productos con bajo stock.")
+            print(f"[{red}]No hay productos con bajo stock.[/{red}]")
             return
 
         # Crear un archivo Excel
@@ -171,7 +173,7 @@ def generar_reporte_bajo_stock(conexion, umbral=5):
             for row_num in range(4, 4 + len(productos_bajo_stock)):
                 hoja[f'E{row_num}'].number_format = '"$"#,##0.00'  # Formato para mostrar como $ 50.00
 
-        print(f"Reporte de productos con bajo stock generado correctamente como '{archivo_excel}'.")
+        print(f"[{green}]Reporte de productos con bajo stock generado correctamente como '{archivo_excel}'.[/{green}]")
 
     except Error as e:
-        print(f"Error al generar el reporte: {e}")
+        print(f"[{red}]Error al generar el reporte: {e}[/{red}]")
