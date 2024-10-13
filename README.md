@@ -40,6 +40,14 @@ Este es un script de Python para la gestión de stock de productos. Permite regi
 
 ## Tecnologías Utilizadas
 
+<p align="center">
+  <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" alt="Python" width="100" />
+  <img src="https://github.com/devicons/devicon/blob/master/icons/sqlite/sqlite-original.svg" alt="SQLite" width="100" />
+  <img src="https://res.cloudinary.com/dpvzlh1zv/image/upload/v1728851442/control%20de%20stock/g2ya33uf54z82z8y9eg7.png" alt="Pandas" width="100" />
+  <img src="https://res.cloudinary.com/dpvzlh1zv/image/upload/v1728851558/control%20de%20stock/mz2fygslph6gmboazfxk.png" alt="openpyxl" width="100" />
+</p>
+
+
 - Python
 - SQLite (para la gestión de la base de datos)
 - Rich (para la interfaz de usuario)
